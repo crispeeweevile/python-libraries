@@ -12,11 +12,11 @@ class Color3(tuple):
         "PURPLE": (255, 0, 255),
     }
 
-    def __init__(self, r: int, g: int, b: int) -> None:
+    def __init__(self, r: int, g: int, b: int) -> None: # technically it is...
         """Base constructor for making a new Color3"""
-        self.r = r
-        self.g = g
-        self.b = b
+        self.red = r
+        self.green = g
+        self.blue = b
 
     @classmethod
     def from_tuple(cls, color_tuple: tuple | list) -> object:

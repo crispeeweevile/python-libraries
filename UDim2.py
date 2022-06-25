@@ -14,8 +14,8 @@ class UDim2(tuple):
     def __init__(self, scale_x: float, offset_x: int, scale_y: float, offset_y: int) -> None:
         """Creates a new UDim2 object. scale values are floats that represent a percentage of the display resolution, offset values are integers that represent an exact number of pixels to move something by"""
         UDim2.verify_pygame_loaded()
-        self.Scale = [scale_x, scale_y]
-        self.Offset = [offset_x, offset_y]
+        self.scale = [scale_x, scale_y]
+        self.offset = [offset_x, offset_y]
 
     @classmethod
     def from_scale(cls, scale_x: float, scale_y: float) -> object:
@@ -34,7 +34,7 @@ class UDim2(tuple):
     def calculate(self) -> list:
         """Calculates the exact pixel count for x and y"""
         UDim2.verify_pygame_loaded()
-        return [(self.Scale[0]*self.res[0])+self.Offset[0], (self.Scale[1]*self.res[1])+self.Offset[1]]
+        return [(self.scale[0]*self.res[0])+self.offset[0], (self.scale[1]*self.res[1])+self.offset[1]]
 
     def __new__(cls, sx,ox,sy,oy):
         """Uhhh, I'm not really sure, but it gives us compatability for Pygame... (Essentially makes the class act like a tuple?)"""
