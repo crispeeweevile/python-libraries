@@ -12,7 +12,7 @@ class Color3(tuple):
         "PURPLE": (255, 0, 255),
     }
 
-    def __init__(self, r: int, g: int, b: int) -> None: # technically it is...
+    def __init__(self, r: int, g: int, b: int) -> None:
         """Base constructor for making a new Color3"""
         self.red = r
         self.green = g
