@@ -1,4 +1,3 @@
-from pickle import OBJ
 import pygame
 
     
