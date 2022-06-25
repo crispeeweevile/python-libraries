@@ -1,3 +1,4 @@
+from pickle import OBJ
 import pygame
 
     
@@ -11,27 +12,27 @@ class UDim2(tuple):
         if not pygame.get_init(): raise Exception("Pygame must be initialized before UDim2 can be used!")
         if not pygame.display.get_active(): raise Exception("There must be an initialized display before UDim2 can be used!")
 
-    def __init__(self, scale_x, offset_x, scale_y, offset_y) -> None:
+    def __init__(self, scale_x: float, offset_x: int, scale_y: float, offset_y: int) -> None:
         """Creates a new UDim2 object. scale values are floats that represent a percentage of the display resolution, offset values are integers that represent an exact number of pixels to move something by"""
         UDim2.verify_pygame_loaded()
         self.Scale = [scale_x, scale_y]
         self.Offset = [offset_x, offset_y]
 
     @classmethod
-    def from_scale(cls, scale_x, scale_y):
+    def from_scale(cls, scale_x: float, scale_y: float) -> object:
         """Creates a new UDim2 object using only the scale value, offset will default to 0"""
         UDim2.verify_pygame_loaded()
         res=pygame.display.get_window_size()
         return cls(scale_x, 0, scale_y, 0)
 
     @classmethod
-    def from_offset(cls, offset_x, offset_y):
+    def from_offset(cls, offset_x: int, offset_y: int) -> object:
         """Creates a new UDim2 object using only the offset value, scale will default to 0"""
         UDim2.verify_pygame_loaded()
         res=pygame.display.get_window_size()
         return cls(0, offset_x, 0, offset_y)
 
-    def calculate(self):
+    def calculate(self) -> list:
         """Calculates the exact pixel count for x and y"""
         UDim2.verify_pygame_loaded()
         return [(self.Scale[0]*self.res[0])+self.Offset[0], (self.Scale[1]*self.res[1])+self.Offset[1]]
